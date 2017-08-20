@@ -53,6 +53,9 @@ ifeq ($(OS),android)
 else
 	cd $(PLATFORM); sed -ie 's|_locale _localemodule.c   -lintl|_locale _localemodule.c   -lintl $(LINK_ICONV)|' Modules/Setup.dist
 endif
+ifeq ($(OS),ios)
+	cd $(PLATFORM); sed -ie 's|_posixsubprocess _posixsubprocess.c|#_posixsubprocess _posixsubprocess.c|' Modules/Setup.dist
+endif
 ifeq ($(OS),osx)
 	cd $(PLATFORM); sed -ie 's|MACHDEP="unknown"|MACHDEP="darwin"|' configure.ac
 	echo "_scproxy \$$(srcdir)/Modules/_scproxy.c -framework SystemConfiguration -framework CoreFoundation" >> $(PLATFORM)/Modules/Setup.dist
