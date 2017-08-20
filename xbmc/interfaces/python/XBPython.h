@@ -105,8 +105,6 @@ private:
   void Finalize();
 
   CCriticalSection    m_critSection;
-  bool              FileExist(const char* strFile);
-
   void*             m_mainThreadState;
   ThreadIdentifier  m_ThreadId;
   bool              m_bInitialized;
